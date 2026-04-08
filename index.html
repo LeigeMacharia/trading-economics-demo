@@ -1,814 +1,1114 @@
 <!doctype html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Elijah Macharia" />
-        <meta name="description" content="A demo app of the TradingEconomics UI to improve user experience" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Elijah Macharia" />
+    <meta
+      name="description"
+      content="A demo app of the TradingEconomics UI to improve user experience"
+    />
 
-        <title>TradingEconomics Demo</title>
+    <title>TradingEconomics Demo</title>
 
-        <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 
-        <script src="https://unpkg.com/lucide@latest"></script>
-        <script src="index.js" defer></script>
-    </head>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="index.js" defer></script>
+  </head>
 
-    <body>
-        <!--Header Section-->
-        <header>
-            <div class="trading-economics-logo">
-                <img src="assets/images/logo/trading-economics-logo.svg" alt="TradingEconomics Logo" width="100"/>
+  <body>
+    <!--Header Section-->
+    <header>
+      <div class="trading-economics-logo">
+        <img
+          src="assets/images/logo/trading-economics-logo.svg"
+          alt="TradingEconomics Logo"
+          width="100"
+        />
+      </div>
+
+      <!--Main Navigation Links-->
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="calender.html">Calendar</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="countries.html">Countries</a></li>
+          <li><a href="forecasts.html">Forecast</a></li>
+        </ul>
+      </nav>
+
+      <!--Search Button-->
+      <label for="search-input" class="visually-hidden"> Search </label>
+      <input type="search" id="search-input" placeholder="Search..." />
+      <button id="search-button" aria-label="Submit Search">
+        <i data-lucide="search"></i>
+      </button>
+
+      <!--Theme Toggle Button-->
+      <button id="theme-toggle">
+        <span class="theme-toggle-light" aria-hidden="true">
+            <i data-lucide="sun"></i>
+        </span>
+        <span class="theme-toggle-dark" aria-hidden="true">
+            <i data-lucide="moon"></i>
+        </span>
+      </button>
+
+      <!--Login / Sign Up-->
+      <div class="auth-buttons">
+        <button id="login-button">Login</button>
+        <button id="signup-button">Sign Up</button>
+      </div>
+    </header>
+
+    <!--Hero Section-->
+    <section class="hero">
+      <h2>Welcome to TradingEconomics</h2>
+      <p>Your gateway to global economic insights and market data.</p>
+
+      <!--Market Ticker Strip-->
+      <div class="market-ticker">
+        <ul>
+          <li>
+            <strong>S&P 500:</strong> 4,567.89
+            <span class="color-percentage-change">(+0.23%)</span>
+          </li>
+          <li>
+            <strong>DOW JONES:</strong> 35,678.90
+            <span class="color-percentage-change">(+0.12%)</span>
+          </li>
+          <li>
+            <strong>NASDAQ:</strong> 14,567.89
+            <span class="color-percentage-change">(+0.34%)</span>
+          </li>
+          <li>
+            <strong>Bitcoin:</strong> 14,567.89
+            <span class="color-percentage-change">(+0.34%)</span>
+          </li>
+          <li>
+            <strong>Gold:</strong> 14,567.89
+            <span class="color-percentage-change">(+0.34%)</span>
+          </li>
+          <li>
+            <strong>Oil:</strong> 14,567.89
+            <span class="color-percentage-change">(+0.34%)</span>
+          </li>
+          <li>
+            <strong>EUR/USD:</strong> 14,567
+            <span class="color-percentage-change">(+0.34%)</span>
+          </li>
+          <li><strong>GBP/USD:</strong> 14,567.89 <span>(+0.34%)</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!--Main Section-->
+    <main>
+      <!--Market Snapshot Dashboard-->
+      <section class="market-snapshot">
+        <h2>Market Watcher</h2>
+        <div class="market-snapshot-dashboard">
+          <!-- I want to link this list to its respective tables-->
+          <ul role="tablist" class="market-tabs" aria-label="Market Categories">
+            <li
+              role="tab"
+              class="active"
+              data-target="commodities-table"
+              aria-selected="true"
+            >
+              Commodities
+            </li>
+            <li
+              role="tab"
+              class="tab"
+              data-target="indices-table"
+              aria-selected="false"
+            >
+              Indices
+            </li>
+            <li
+              role="tab"
+              class="tab"
+              data-target="stocks-table"
+              aria-selected="false"
+            >
+              Stocks
+            </li>
+            <li
+              role="tab"
+              class="tab"
+              data-target="forex-table"
+              aria-selected="false"
+            >
+              Forex
+            </li>
+            <li
+              role="tab"
+              class="tab"
+              data-target="crypto-table"
+              aria-selected="false"
+            >
+              Crypto
+            </li>
+            <li
+              role="tab"
+              class="tab"
+              data-target="bonds-table"
+              aria-selected="false"
+            >
+              Bonds
+            </li>
+          </ul>
+
+          <table class="commodities-table">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Crude Oil</td>
+                <td>112.257</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Brent</td>
+                <td>109.885</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Natural Gas</td>
+                <td>2.8036</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Gold</td>
+                <td>4652.08</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Copper</td>
+                <td>5.5885</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="indices-table">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>US500</td>
+                <td>6614.01</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>US30</td>
+                <td>46671</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>US100</td>
+                <td>24192</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>JP25</td>
+                <td>538524652.08</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>GB100</td>
+                <td>10436</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="stocks-table">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apple</td>
+                <td>258.30</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Tesla</td>
+                <td>351.28</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Microsoft</td>
+                <td>372.60</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Amazon</td>
+                <td>212.06</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Meta</td>
+                <td>577.23</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="forex-table">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>EURUSD</td>
+                <td>1.9857</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>GBPUSD</td>
+                <td>1.345</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>AUDUSD</td>
+                <td>0.8036</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>NZDUSD</td>
+                <td>0.54545</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>USDJYP</td>
+                <td>159.710</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="crypto-table">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bitcoin</td>
+                <td>69816</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Ether</td>
+                <td>2142</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Solana</td>
+                <td>81.453</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Monero</td>
+                <td>327.45</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Binance</td>
+                <td>606.5674</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="bonds-table">
+            <thead>
+              <tr>
+                <th scope="col">Asset</th>
+                <th scope="col">Price</th>
+                <th scope="col">Change</th>
+                <th scope="col">% Change</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>United States</td>
+                <td>112.257</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>United Kingdom</td>
+                <td>109.885</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Japan</td>
+                <td>2.8036</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Australia</td>
+                <td>4652.08</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+              <tr>
+                <td>Germany</td>
+                <td>5.5885</td>
+                <td><span class="color-percentage-change">+0.79</span></td>
+                <td><span class="color-percentage-change">+0.23%</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <a href="markets.html" class="view-more-link">View More</a>
+        </div>
+      </section>
+
+      <!-- Key Global Indicators Strip -->
+      <section class="key-global-indicators">
+        <div class="section-header">
+          <h2>Key Global Indicators</h2>
+          <a href="indicators.html" class="view-more-link"
+            >View All Indicators</a
+          >
+        </div>
+
+        <div class="indicators-grid">
+          <!-- Indicator Card 1 -->
+          <div class="indicator-card">
+            <div class="indicator-card-header">
+              <h3 class="indicator-name">GDP Growth Rate</h3>
+              <span class="indicator-frequency">Quarterly</span>
             </div>
-        
-             <!--Main Navigation Links-->
-            <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="markets.html">Markets</a></li>
-                <li><a href="calender.html">Calendar</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="countries.html">Countries</a></li>
-                <li><a href="forecasts.html">Forecast</a></li>
+
+            <ul class="indicator-country-list">
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/us.svg"
+                    alt="United States flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United States</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">2.5%</span>
+                  <span class="indicator-change positive">+0.3%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/cn.svg"
+                    alt="China flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">China</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">6.1%</span>
+                  <span class="indicator-change negative">-0.2%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending down"
+                    ><i data-lucide="square-arrow-down"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/de.svg"
+                    alt="Germany flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Germany</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">1.8%</span>
+                  <span class="indicator-change positive">+0.1%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
             </ul>
-            </nav>
 
-            <!--Search Button-->
-                <label for="search-input" class="visually-hidden">
-                    Search
-                </label>
-                <input type="search" id="search-input" placeholder="Search..." />
-                <button id="search-button" aria-label="Submit Search"><i data-lucide="search"></i></button>
+            <a
+              href="indicators.html#gdp-growth-rate"
+              class="indicator-card-link"
+              >View Full Data →</a
+            >
+          </div>
 
-                <!--Theme Toggle Button-->
-                <button id="theme-toggle">
-                    <span class="theme-toggle-light" aria-hidden="true"><i data-lucide="sun"></i></span>
-                    <span class="theme-toggle-dark" aria-hidden="true"><i data-lucide="moon"></i></span> 
-                </button>
-
-                <!--Login / Sign Up-->
-                <div class="auth-buttons">
-                    <button id="login-button">Login</button>
-                    <button id="signup-button">Sign Up</button>
-                </div>
-        </header>
-
-        <!--Hero Section-->
-        <section class="hero">
-            <h2>Welcome to TradingEconomics</h2>
-            <p>Your gateway to global economic insights and market data.</p>
-
-            <!--Market Ticker Strip-->
-            <div class="market-ticker">
-                <ul>
-                    <li><strong>S&P 500:</strong> 4,567.89 <span class="color-percentage-change">(+0.23%)</span></li>
-                    <li><strong>DOW JONES:</strong> 35,678.90 <span class="color-percentage-change">(+0.12%)</span></li>
-                    <li><strong>NASDAQ:</strong> 14,567.89 <span class="color-percentage-change">(+0.34%)</span></li>
-                    <li><strong>Bitcoin:</strong> 14,567.89 <span class="color-percentage-change">(+0.34%)</span></li>
-                    <li><strong>Gold:</strong> 14,567.89 <span class="color-percentage-change">(+0.34%)</span></li>
-                    <li><strong>Oil:</strong> 14,567.89 <span class="color-percentage-change">(+0.34%)</span></li>
-                    <li><strong>EUR/USD:</strong> 14,567 <span class="color-percentage-change">(+0.34%)</span></li>
-                    <li><strong>GBP/USD:</strong> 14,567.89 <span>(+0.34%)</span></li>
-                </ul>
+          <!-- Indicator Card 2 -->
+          <div class="indicator-card">
+            <div class="indicator-card-header">
+              <h3 class="indicator-name">Inflation Rate</h3>
+              <span class="indicator-frequency">Monthly</span>
             </div>
-        </section>
 
-        <!--Main Section-->
-        <main>
-            <!--Market Snapshot Dashboard-->
-            <section class="market-snapshot">
-                <h2>Market Watcher</h2>
-                <div class="market-snapshot-dashboard">
-                    <!-- I want to link this list to its respective tables-->
-                    <ul role="tablist" class="market-tabs" aria-label="Market Categories">
-                        <li role="tab" class="active" data-target="commodities-table" aria-selected="true">Commodities</li>
-                        <li role="tab" class="tab" data-target="indices-table" aria-selected="false">Indices</li>
-                        <li role="tab" class="tab" data-target="stocks-table" aria-selected="false">Stocks</li>
-                        <li role="tab" class="tab" data-target="forex-table" aria-selected="false">Forex</li>
-                        <li role="tab" class="tab" data-target="crypto-table" aria-selected="false">Crypto</li>
-                        <li role="tab" class="tab" data-target="bonds-table" aria-selected="false">Bonds</li>
-                    </ul>
-                    
-                    <table class="commodities-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Asset</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Change</th>
-                                <th scope="col">% Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Crude Oil</td>
-                                <td>112.257</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Brent</td>
-                                <td>109.885</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Natural Gas</td>
-                                <td>2.8036</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Gold</td>
-                                <td>4652.08</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Copper</td>
-                                <td>5.5885</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="indices-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Asset</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Change</th>
-                                <th scope="col">% Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>US500</td>
-                                <td>6614.01</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>US30</td>
-                                <td>46671</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>US100</td>
-                                <td>24192</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>JP25</td>
-                                <td>538524652.08</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>GB100</td>
-                                <td>10436</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="stocks-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Asset</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Change</th>
-                                <th scope="col">% Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Apple</td>
-                                <td>258.30</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Tesla</td>
-                                <td>351.28</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Microsoft</td>
-                                <td>372.60</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Amazon</td>
-                                <td>212.06</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Meta</td>
-                                <td>577.23</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="forex-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Asset</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Change</th>
-                                <th scope="col">% Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>EURUSD</td>
-                                <td>1.9857</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>GBPUSD</td>
-                                <td>1.345</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>AUDUSD</td>
-                                <td>0.8036</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>NZDUSD</td>
-                                <td>0.54545</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>USDJYP</td>
-                                <td>159.710</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="crypto-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Asset</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Change</th>
-                                <th scope="col">% Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Bitcoin</td>
-                                <td>69816</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Ether</td>
-                                <td>2142</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Solana</td>
-                                <td>81.453</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Monero</td>
-                                <td>327.45</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Binance</td>
-                                <td>606.5674</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="bonds-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Asset</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Change</th>
-                                <th scope="col">% Change</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>United States</td>
-                                <td>112.257</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>United Kingdom</td>
-                                <td>109.885</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Japan</td>
-                                <td>2.8036</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Australia</td>
-                                <td>4652.08</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                            <tr>
-                                <td>Germany</td>
-                                <td>5.5885</td>
-                                <td><span class="color-percentage-change">+0.79</span></td>
-                                <td><span class="color-percentage-change">+0.23%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <a href="markets.html" class="view-more-link">View More</a>
+            <ul class="indicator-country-list">
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/us.svg"
+                    alt="United States flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United States</span>
                 </div>
-            </section>
-
-            <!-- Key Global Indicators Strip -->
-            <section class="key-global-indicators">
-
-                <div class="section-header">
-                    <h2>Key Global Indicators</h2>
-                    <a href="indicators.html" class="view-more-link">View All Indicators</a>
+                <div class="indicator-data">
+                  <span class="indicator-value">3.2%</span>
+                  <span class="indicator-change negative">+0.1%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
                 </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
 
-                <div class="indicators-grid">
-
-                    <!-- Indicator Card 1 -->
-                    <div class="indicator-card">
-                        <div class="indicator-card-header">
-                            <h3 class="indicator-name">GDP Growth Rate</h3>
-                            <span class="indicator-frequency">Quarterly</span>
-                        </div>
-
-                        <ul class="indicator-country-list">
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/us.svg" alt="United States flag" class="country-flag" width="20" />
-                                    <span class="country-name">United States</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">2.5%</span>
-                                    <span class="indicator-change positive">+0.3%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/cn.svg" alt="China flag" class="country-flag" width="20" />
-                                    <span class="country-name">China</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">6.1%</span>
-                                    <span class="indicator-change negative">-0.2%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending down"><i data-lucide="square-arrow-down"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/de.svg" alt="Germany flag" class="country-flag" width="20" />
-                                    <span class="country-name">Germany</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">1.8%</span>
-                                    <span class="indicator-change positive">+0.1%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-                        </ul>
-
-                        <a href="indicators.html#gdp-growth-rate" class="indicator-card-link">View Full Data →</a>
-                    </div>
-
-                    <!-- Indicator Card 2 -->
-                    <div class="indicator-card">
-                        <div class="indicator-card-header">
-                            <h3 class="indicator-name">Inflation Rate</h3>
-                            <span class="indicator-frequency">Monthly</span>
-                        </div>
-
-                        <ul class="indicator-country-list">
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/us.svg" alt="United States flag" class="country-flag" width="20" />
-                                    <span class="country-name">United States</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">3.2%</span>
-                                    <span class="indicator-change negative">+0.1%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/eu.svg" alt="Euro Area flag" class="country-flag" width="20" />
-                                    <span class="country-name">Euro Area</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">2.6%</span>
-                                    <span class="indicator-change positive">-0.2%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending down"><i data-lucide="square-arrow-down"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/gb.svg" alt="United Kingdom flag" class="country-flag" width="20" />
-                                    <span class="country-name">United Kingdom</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">3.8%</span>
-                                    <span class="indicator-change negative">+0.3%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-                        </ul>
-
-                        <a href="indicators.html#inflation-rate" class="indicator-card-link">View Full Data →</a>
-                    </div>
-
-                    <!-- Indicator Card 3 -->
-                    <div class="indicator-card">
-                        <div class="indicator-card-header">
-                            <h3 class="indicator-name">Interest Rate</h3>
-                            <span class="indicator-frequency">Per Decision</span>
-                        </div>
-
-                        <ul class="indicator-country-list">
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/us.svg" alt="United States flag" class="country-flag" width="20" />
-                                    <span class="country-name">United States</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">5.50%</span>
-                                    <span class="indicator-change neutral">0.00%</span>
-                                    <span class="indicator-trend neutral" aria-label="Unchanged"><i data-lucide="square-arrow-right"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/gb.svg" alt="United Kingdom flag" class="country-flag" width="20" />
-                                    <span class="country-name">United Kingdom</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">5.25%</span>
-                                    <span class="indicator-change neutral">0.00%</span>
-                                    <span class="indicator-trend neutral" aria-label="Unchanged"><i data-lucide="square-arrow-right"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/jp.svg" alt="Japan flag" class="country-flag" width="20" />
-                                    <span class="country-name">Japan</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">0.10%</span>
-                                    <span class="indicator-change positive">+0.10%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-                        </ul>
-
-                        <a href="indicators.html#interest-rate" class="indicator-card-link">View Full Data →</a>
-                    </div>
-
-                    <!-- Indicator Card 4 -->
-                    <div class="indicator-card">
-                        <div class="indicator-card-header">
-                            <h3 class="indicator-name">Unemployment Rate</h3>
-                            <span class="indicator-frequency">Monthly</span>
-                        </div>
-
-                        <ul class="indicator-country-list">
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/us.svg" alt="United States flag" class="country-flag" width="20" />
-                                    <span class="country-name">United States</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">3.9%</span>
-                                    <span class="indicator-change positive">-0.1%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending down"><i data-lucide="square-arrow-down"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/eu.svg" alt="Euro Area flag" class="country-flag" width="20" />
-                                    <span class="country-name">Euro Area</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">6.5%</span>
-                                    <span class="indicator-change positive">-0.2%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending down"><i data-lucide="square-arrow-down"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/br.svg" alt="Brazil flag" class="country-flag" width="20" />
-                                    <span class="country-name">Brazil</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">7.8%</span>
-                                    <span class="indicator-change negative">+0.4%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-                        </ul>
-
-                        <a href="indicators.html#unemployment-rate" class="indicator-card-link">View Full Data →</a>
-                    </div>
-
-                    <!-- Indicator Card 5 -->
-                    <div class="indicator-card">
-                        <div class="indicator-card-header">
-                            <h3 class="indicator-name">Government Debt to GDP</h3>
-                            <span class="indicator-frequency">Annual</span>
-                        </div>
-
-                        <ul class="indicator-country-list">
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/jp.svg" alt="Japan flag" class="country-flag" width="20" />
-                                    <span class="country-name">Japan</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">261%</span>
-                                    <span class="indicator-change negative">+3.2%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/us.svg" alt="United States flag" class="country-flag" width="20" />
-                                    <span class="country-name">United States</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">129%</span>
-                                    <span class="indicator-change negative">+1.8%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/de.svg" alt="Germany flag" class="country-flag" width="20" />
-                                    <span class="country-name">Germany</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">66%</span>
-                                    <span class="indicator-change positive">-0.9%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending down"><i data-lucide="square-arrow-down"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-                        </ul>
-
-                        <a href="indicators.html#government-debt" class="indicator-card-link">View Full Data →</a>
-                    </div>
-
-                    <!-- Indicator Card 6 -->
-                    <div class="indicator-card">
-                        <div class="indicator-card-header">
-                            <h3 class="indicator-name">Current Account to GDP</h3>
-                            <span class="indicator-frequency">Annual</span>
-                        </div>
-
-                        <ul class="indicator-country-list">
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/cn.svg" alt="China flag" class="country-flag" width="20" />
-                                    <span class="country-name">China</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">1.5%</span>
-                                    <span class="indicator-change positive">+0.3%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/de.svg" alt="Germany flag" class="country-flag" width="20" />
-                                    <span class="country-name">Germany</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">4.2%</span>
-                                    <span class="indicator-change positive">+0.1%</span>
-                                    <span class="indicator-trend positive" aria-label="Trending up"><i data-lucide="square-arrow-up"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-
-                            <li class="indicator-row">
-                                <div class="indicator-country">
-                                    <img src="assets/images/flags/us.svg" alt="United States flag" class="country-flag" width="20" />
-                                    <span class="country-name">United States</span>
-                                </div>
-                                <div class="indicator-data">
-                                    <span class="indicator-value">-3.3%</span>
-                                    <span class="indicator-change negative">-0.2%</span>
-                                    <span class="indicator-trend negative" aria-label="Trending down"><i data-lucide="square-arrow-down"></i></span>
-                                </div>
-                                <div class="sparkline-placeholder" aria-hidden="true"></div>
-                            </li>
-                        </ul>
-
-                        <a href="indicators.html#current-account" class="indicator-card-link">View Full Data →</a>
-                    </div>
-
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/eu.svg"
+                    alt="Euro Area flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Euro Area</span>
                 </div>
-            </section>
-            
-             <!-- Economic Calender Preview -->
-             <section class="economic-calendar">
-                    <div class="economic-calendar-preview">
-                        <h2>Economic Calendar</h2>
-                        <table class="economic-calendar-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Event</th>
-                                    <th scope="col">Country</th>
-                                    <th scope="col">Impact</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2024-06-15</td>
-                                    <td>US CPI Release</td>
-                                    <td>United States</td>
-                                    <td><span class="high-impact">High</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2024-06-16</td>
-                                    <td>ECB Interest Rate Decision</td>
-                                    <td>Eurozone</td>
-                                    <td><span class="medium-impact">Medium</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2024-06-17</td>
-                                    <td>China GDP Release</td>
-                                    <td>China</td>
-                                    <td><span class="high-impact">High</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2024-06-18</td>
-                                    <td>UK Unemployment Rate</td>
-                                    <td>United Kingdom</td>
-                                    <td><span class="low-impact">Low</span></td>
-                                </tr>
-                                <tr>
-                                    <td>2024-06-19</td>
-                                    <td>Japan Retail Sales Release</td>
-                                    <td>Japan</td>
-                                    <td><span class="medium-impact">Medium</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <a href="calender.html" class="view-more-link">View Full Calendar</a>
-                    </div>
-             </section>
-             
-             <!-- Latest News -->
-             <section class="latest-news">
-                 <div class="news-container">
-                     <h2>Latest News</h2>
-                     <article class="news-item">
-                        <img src="assets/images/placement-images/placement-img-1.jpg" alt="News Image" class="news-image" width="300" height="200"/>
-                        <time datetime="2026-04-06">April 6, 2026</time>
-                        <span class="news-category">Inflation</span>
-                         <h3>US Inflation Data Surpasses Expectations</h3>
-                         <p>The latest US inflation data has exceeded market expectations, raising concerns about the Federal Reserve's monetary policy.</p>
-                     </article>
-
-                     <article class="news-item">
-                        <img src="assets/images/placement-images/placement-img-2.jpg" alt="News Image" class="news-image" width="300" height="200"/>
-                        <time datetime="2026-04-06">April 6, 2026</time>
-                         <span class="news-category">Economy</span>
-                         <h3>China's Economic Growth Slows Down</h3>
-                         <p>China's economic growth has slowed down, impacting global markets and investor sentiment.</p>
-                     </article>
-
-                    <article class="news-item">
-                        <img src="assets/images/placement-images/placement-img-3.jpg" alt="News Image" class="news-image" width="300" height="200"/>
-                        <time datetime="2026-04-06">April 6, 2026</time>
-                        <span class="news-category">Monetary Policy</span>
-                        <h3>ECB Signals Possible Interest Rate Hike</h3>
-                        <p>The European Central Bank has signaled a possible interest rate hike in response to rising inflation in the Eurozone.</p>
-                    </article>
-
-                    <article class="news-item">
-                        <img src="assets/images/placement-images/placement-img-4.jpg" alt="News Image" class="news-image" width="300" height="200"/>
-                        <span class="news-category">Stock Market</span>
-                        <time datetime="2026-04-06">April 6, 2026</time>
-                        <h3>Tech Stocks Rally Amid Strong Earnings</h3>
-                        <p>Tech stocks have rallied following strong earnings reports from major companies, boosting investor confidence.</p>
-                    </article>
-
-                    <article class="news-item">
-                        <img src="assets/images/placement-images/placement-img-5.jpg" alt="News Image" class="news-image" width="300" height="200"/>
-                        <span class="news-category">Energy</span>
-                        <time datetime="2026-04-06">April 6, 2026</time>
-                        <h3>Oil Prices Rise on Supply Concerns</h3>
-                        <p>Oil prices have risen due to concerns about supply disruptions in key producing regions.</p>
-                    </article>
-
-                    <a href="news.html" class="view-more-link">View More News</a>
-                 </div>
-             </section>
-
-             <!-- Countries Quick Access -->
-            <section class="countries-quick-access">
-                <div class="countries-quick-access-container">
-                    <h2>Countries</h2>
-                    <ul>
-                        <li><a href="countries.html#united-states">United States</a></li>
-                        <li><a href="countries.html#china">China</a></li>
-                        <li><a href="countries.html#united-kingdom">United Kingdom</a></li>
-                        <li><a href="countries.html#australia">Australia</a></li>
-                        <li><a href="countries.html#south-africa">South Africa</a></li>
-                        <li><a href="countries.html#united-arab-emirates">United Arab Emirates</a></li>
-                    </ul>
-    
-                <a href="countries.html" class="view-more-link">View All Countries</a>
+                <div class="indicator-data">
+                  <span class="indicator-value">2.6%</span>
+                  <span class="indicator-change positive">-0.2%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending down"
+                    ><i data-lucide="square-arrow-down"></i
+                  ></span>
                 </div>
-            </section>
-        </main>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
 
-        <!-- Footer -->
-        <footer>
-            <div class="footer-container">
-                <ul class="about-us-links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Customers</a></li>
-                    <li><a href="#">Investors</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/gb.svg"
+                    alt="United Kingdom flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United Kingdom</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">3.8%</span>
+                  <span class="indicator-change negative">+0.3%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+            </ul>
 
-                <ul class="solutions-links">
-                    <li><a href="#">Developers</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">API Reference</a></li>
-                </ul>
-                <p>&copy; 2026 TradingEconomics-demo. All rights reserved.</p>
+            <a href="indicators.html#inflation-rate" class="indicator-card-link"
+              >View Full Data →</a
+            >
+          </div>
+
+          <!-- Indicator Card 3 -->
+          <div class="indicator-card">
+            <div class="indicator-card-header">
+              <h3 class="indicator-name">Interest Rate</h3>
+              <span class="indicator-frequency">Per Decision</span>
             </div>
-        </footer>
 
-        <script>lucide.createIcons();</script>
-    </body>
+            <ul class="indicator-country-list">
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/us.svg"
+                    alt="United States flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United States</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">5.50%</span>
+                  <span class="indicator-change neutral">0.00%</span>
+                  <span class="indicator-trend neutral" aria-label="Unchanged"
+                    ><i data-lucide="square-arrow-right"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
 
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/gb.svg"
+                    alt="United Kingdom flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United Kingdom</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">5.25%</span>
+                  <span class="indicator-change neutral">0.00%</span>
+                  <span class="indicator-trend neutral" aria-label="Unchanged"
+                    ><i data-lucide="square-arrow-right"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/jp.svg"
+                    alt="Japan flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Japan</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">0.10%</span>
+                  <span class="indicator-change positive">+0.10%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+            </ul>
+
+            <a href="indicators.html#interest-rate" class="indicator-card-link"
+              >View Full Data →</a
+            >
+          </div>
+
+          <!-- Indicator Card 4 -->
+          <div class="indicator-card">
+            <div class="indicator-card-header">
+              <h3 class="indicator-name">Unemployment Rate</h3>
+              <span class="indicator-frequency">Monthly</span>
+            </div>
+
+            <ul class="indicator-country-list">
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/us.svg"
+                    alt="United States flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United States</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">3.9%</span>
+                  <span class="indicator-change positive">-0.1%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending down"
+                    ><i data-lucide="square-arrow-down"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/eu.svg"
+                    alt="Euro Area flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Euro Area</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">6.5%</span>
+                  <span class="indicator-change positive">-0.2%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending down"
+                    ><i data-lucide="square-arrow-down"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/br.svg"
+                    alt="Brazil flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Brazil</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">7.8%</span>
+                  <span class="indicator-change negative">+0.4%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+            </ul>
+
+            <a
+              href="indicators.html#unemployment-rate"
+              class="indicator-card-link"
+              >View Full Data →</a
+            >
+          </div>
+
+          <!-- Indicator Card 5 -->
+          <div class="indicator-card">
+            <div class="indicator-card-header">
+              <h3 class="indicator-name">Government Debt to GDP</h3>
+              <span class="indicator-frequency">Annual</span>
+            </div>
+
+            <ul class="indicator-country-list">
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/jp.svg"
+                    alt="Japan flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Japan</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">261%</span>
+                  <span class="indicator-change negative">+3.2%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/us.svg"
+                    alt="United States flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United States</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">129%</span>
+                  <span class="indicator-change negative">+1.8%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/de.svg"
+                    alt="Germany flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Germany</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">66%</span>
+                  <span class="indicator-change positive">-0.9%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending down"
+                    ><i data-lucide="square-arrow-down"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+            </ul>
+
+            <a
+              href="indicators.html#government-debt"
+              class="indicator-card-link"
+              >View Full Data →</a
+            >
+          </div>
+
+          <!-- Indicator Card 6 -->
+          <div class="indicator-card">
+            <div class="indicator-card-header">
+              <h3 class="indicator-name">Current Account to GDP</h3>
+              <span class="indicator-frequency">Annual</span>
+            </div>
+
+            <ul class="indicator-country-list">
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/cn.svg"
+                    alt="China flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">China</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">1.5%</span>
+                  <span class="indicator-change positive">+0.3%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/de.svg"
+                    alt="Germany flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">Germany</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">4.2%</span>
+                  <span class="indicator-change positive">+0.1%</span>
+                  <span
+                    class="indicator-trend positive"
+                    aria-label="Trending up"
+                    ><i data-lucide="square-arrow-up"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+
+              <li class="indicator-row">
+                <div class="indicator-country">
+                  <img
+                    src="assets/images/flags/us.svg"
+                    alt="United States flag"
+                    class="country-flag"
+                    width="20"
+                  />
+                  <span class="country-name">United States</span>
+                </div>
+                <div class="indicator-data">
+                  <span class="indicator-value">-3.3%</span>
+                  <span class="indicator-change negative">-0.2%</span>
+                  <span
+                    class="indicator-trend negative"
+                    aria-label="Trending down"
+                    ><i data-lucide="square-arrow-down"></i
+                  ></span>
+                </div>
+                <div class="sparkline-placeholder" aria-hidden="true"></div>
+              </li>
+            </ul>
+
+            <a
+              href="indicators.html#current-account"
+              class="indicator-card-link"
+              >View Full Data →</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Economic Calender Preview -->
+      <section class="economic-calendar">
+        <div class="economic-calendar-preview">
+          <h2>Economic Calendar</h2>
+          <table class="economic-calendar-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Event</th>
+                <th scope="col">Country</th>
+                <th scope="col">Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2024-06-15</td>
+                <td>US CPI Release</td>
+                <td>United States</td>
+                <td><span class="high-impact">High</span></td>
+              </tr>
+              <tr>
+                <td>2024-06-16</td>
+                <td>ECB Interest Rate Decision</td>
+                <td>Eurozone</td>
+                <td><span class="medium-impact">Medium</span></td>
+              </tr>
+              <tr>
+                <td>2024-06-17</td>
+                <td>China GDP Release</td>
+                <td>China</td>
+                <td><span class="high-impact">High</span></td>
+              </tr>
+              <tr>
+                <td>2024-06-18</td>
+                <td>UK Unemployment Rate</td>
+                <td>United Kingdom</td>
+                <td><span class="low-impact">Low</span></td>
+              </tr>
+              <tr>
+                <td>2024-06-19</td>
+                <td>Japan Retail Sales Release</td>
+                <td>Japan</td>
+                <td><span class="medium-impact">Medium</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a href="calender.html" class="view-more-link">View Full Calendar</a>
+        </div>
+      </section>
+
+      <!-- Latest News -->
+      <section class="latest-news">
+        <div class="news-container">
+          <h2>Latest News</h2>
+          <article class="news-item">
+            <img
+              src="assets/images/placement-images/placement-img-1.jpg"
+              alt="News Image"
+              class="news-image"
+              width="300"
+              height="200"
+            />
+            <time datetime="2026-04-06">April 6, 2026</time>
+            <span class="news-category">Inflation</span>
+            <h3>US Inflation Data Surpasses Expectations</h3>
+            <p>
+              The latest US inflation data has exceeded market expectations,
+              raising concerns about the Federal Reserve's monetary policy.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <img
+              src="assets/images/placement-images/placement-img-2.jpg"
+              alt="News Image"
+              class="news-image"
+              width="300"
+              height="200"
+            />
+            <time datetime="2026-04-06">April 6, 2026</time>
+            <span class="news-category">Economy</span>
+            <h3>China's Economic Growth Slows Down</h3>
+            <p>
+              China's economic growth has slowed down, impacting global markets
+              and investor sentiment.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <img
+              src="assets/images/placement-images/placement-img-3.jpg"
+              alt="News Image"
+              class="news-image"
+              width="300"
+              height="200"
+            />
+            <time datetime="2026-04-06">April 6, 2026</time>
+            <span class="news-category">Monetary Policy</span>
+            <h3>ECB Signals Possible Interest Rate Hike</h3>
+            <p>
+              The European Central Bank has signaled a possible interest rate
+              hike in response to rising inflation in the Eurozone.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <img
+              src="assets/images/placement-images/placement-img-4.jpg"
+              alt="News Image"
+              class="news-image"
+              width="300"
+              height="200"
+            />
+            <span class="news-category">Stock Market</span>
+            <time datetime="2026-04-06">April 6, 2026</time>
+            <h3>Tech Stocks Rally Amid Strong Earnings</h3>
+            <p>
+              Tech stocks have rallied following strong earnings reports from
+              major companies, boosting investor confidence.
+            </p>
+          </article>
+
+          <article class="news-item">
+            <img
+              src="assets/images/placement-images/placement-img-5.jpg"
+              alt="News Image"
+              class="news-image"
+              width="300"
+              height="200"
+            />
+            <span class="news-category">Energy</span>
+            <time datetime="2026-04-06">April 6, 2026</time>
+            <h3>Oil Prices Rise on Supply Concerns</h3>
+            <p>
+              Oil prices have risen due to concerns about supply disruptions in
+              key producing regions.
+            </p>
+          </article>
+
+          <a href="news.html" class="view-more-link">View More News</a>
+        </div>
+      </section>
+
+      <!-- Countries Quick Access -->
+      <section class="countries-quick-access">
+        <div class="countries-quick-access-container">
+          <h2>Countries</h2>
+          <ul>
+            <li><a href="countries.html#united-states">United States</a></li>
+            <li><a href="countries.html#china">China</a></li>
+            <li><a href="countries.html#united-kingdom">United Kingdom</a></li>
+            <li><a href="countries.html#australia">Australia</a></li>
+            <li><a href="countries.html#south-africa">South Africa</a></li>
+            <li>
+              <a href="countries.html#united-arab-emirates"
+                >United Arab Emirates</a
+              >
+            </li>
+          </ul>
+
+          <a href="countries.html" class="view-more-link">View All Countries</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <ul class="about-us-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Investors</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+
+        <ul class="solutions-links">
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">API Reference</a></li>
+        </ul>
+        <p>&copy; 2026 TradingEconomics-demo. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
 </html>

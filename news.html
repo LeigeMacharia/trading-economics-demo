@@ -1,92 +1,606 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Elijah Macharia" />
+    <meta
+      name="description"
+      content="The latest news and updates from all over the world presented by TradingEconomics."
+    />
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Elijah Macharia" />
-        <meta name="description" content="The latest news and updates from all over the world presented by TradingEconomics." />
+    <title>TradingEconomics News</title>
 
-        <title>TradingEconomics News</title>
+    <link rel="stylesheet" href="styles.css" />
 
-        <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/news-filter.js" defer></script>
+  </head>
 
-        <script src="https://unpkg.com/lucide@latest"></script>
-        <script src="index.js" defer></script>
-    </head>
+  <body>
 
-    <body>
-        <header>
-            <h1>TradingEconomics News</h1>
-            <nav>
+    <header>
+      <div class="trading-economics-logo">
+        <img
+          src="assets/images/logo/trading-economics-logo.svg"
+          alt="TradingEconomics Logo"
+          width="100"
+        />
+      </div>
+
+      <!--Main Navigation Links-->
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="calender.html">Calendar</a></li>
+          <li><a href="countries.html">Countries</a></li>
+          <li><a href="forecasts.html">Forecast</a></li>
+        </ul>
+      </nav>
+
+      <!--Search Button-->
+      <label for="search-input" class="visually-hidden"> Search </label>
+      <input type="search" id="search-input" placeholder="Search..." />
+      <button id="search-button" aria-label="Submit Search">
+        <i data-lucide="search"></i>
+      </button>
+
+      <!--Theme Toggle Button-->
+      <button id="theme-toggle">
+        <span class="theme-toggle-light" aria-hidden="true">
+            <i data-lucide="sun"></i>
+        </span>
+        <span class="theme-toggle-dark" aria-hidden="true">
+            <i data-lucide="moon"></i>
+        </span>
+      </button>
+
+      <!--Login / Sign Up-->
+      <div class="auth-buttons">
+        <button id="login-button">Login</button>
+        <button id="signup-button">Sign Up</button>
+      </div>
+    </header>
+
+    <main>
+        <nav>
+            <ul>
+            <li><a href="#">Home</a></li>
+            <li class="dropdown-nav">
+                <button class="dropdown-btn">
+                Categories
+                <i data-lucide="chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <a href="#">Markets</a>
+                <a href="#">Economy</a>
+                <a href="#">Corporate & Earnings </a>
+                <a href="#">Real Estate </a>
+                <a href="#">Banking & Finance</a>
+                <a href="#">Emerging Markets</a>
+                </div>
+            </li>
+            <li class="dropdown-nav">
+                <button class="dropdown-btn">
+                Global
+                <i data-lucide="chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <a href="#">Global</a>
+                <a href="americas.html">Americas</a>
+                <a href="europe.html">Europe</a>
+                <a href="africa.html">Africa</a>
+                <a href="asia-pacific.html">Asia Pacific</a>
+                <a href="middle-east.html">Middle East</a>
+                <a href="oceania.html">Oceania</a>
+                </div>
+            </li>
+            </ul>
+        </nav>
+
+        <section class="market-data">
+            <h2>Market Data</h2>
+            <div id="market-data-container" class="market-data-grid">
+                <!-- Top 5 Market data from 5 different countries in different continents will be displayed here in a carousel rolling horizontally like the way it shows in screens-->
+            </div>
+        </section>
+
+        <section class="breaking-news-section">
+            <h2>Latest News</h2>
+            <div id="news-container" class="news-carousel">
+            <!-- Breaking News shown in carousel style -->
+                <div class="carousel-item">
+                    <!-- Button linking to the news category -->
+                    <a href="news.html#markets" class="news-category-btn">Markets</a>
+                    <img
+                    src="assets/images/placement-images/placement-img-2.jpg"
+                    alt="News Image 1"
+                    class="news-image"
+                    width="400"
+                    height="250"
+                    />
+                    
+                    <time datetime="2026-04-08">April 8, 2026 </time>
+                    <span class="news-author">/ By John Doe</span>
+
+                    <div class="news-content">
+                        <h3>Global Markets Rally Amid Economic Recovery Hopes</h3>
+                        <p>
+                            Global stock markets rallied today as investors grew optimistic
+                            about the pace of economic recovery following recent positive
+                            data on employment and consumer spending.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <!-- Button linking to the news category -->
+                    <a href="news.html#economy" class="news-category-btn">Economy</a>
+                    <img
+                    src="assets/images/placement-images/placement-img-1.jpg"
+                    alt="News Image 1"
+                    class="news-image"
+                    width="400"
+                    height="250"
+                    />
+                    <div class="news-content">
+                    <time datetime="2026-04-08">April 8, 2026 </time
+                    ><span class="news-author">/ By John Doe</span>
+                    <h3>Global Markets Rally Amid Economic Recovery Hopes</h3>
+                    <p>
+                        Global stock markets rallied today as investors grew optimistic
+                        about the pace of economic recovery following recent positive
+                        data on employment and consumer spending.
+                    </p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <!-- Button linking to the news category -->
+                    <a href="news.html#real-estate" class="news-category-btn">Real Estate</a>
+                    <img
+                    src="assets/images/placement-images/placement-img-3.jpg"
+                    alt="News Image 1"
+                    class="news-image"
+                    width="400"
+                    height="250"
+                    />
+                    <div class="news-content">
+                    <time datetime="2026-04-08">April 8, 2026 </time
+                    ><span class="news-author">/ By John Doe</span>
+                    <h3>Global Markets Rally Amid Economic Recovery Hopes</h3>
+                    <p>
+                        Global stock markets rallied today as investors grew optimistic
+                        about the pace of economic recovery following recent positive
+                        data on employment and consumer spending.
+                    </p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <!-- Button linking to the news category -->
+                    <a href="news.html#corporate-earnings" class="news-category-btn">Corporate & Earnings</a>
+                    <img
+                    src="assets/images/placement-images/placement-img-5.jpg"
+                    alt="News Image 1"
+                    class="news-image"
+                    width="400"
+                    height="250"
+                    />
+                    <div class="news-content">
+                    <time datetime="2026-04-08">April 8, 2026 </time
+                    ><span class="news-author">/ By John Doe</span>
+                    <h3>Global Markets Rally Amid Economic Recovery Hopes</h3>
+                    <p>
+                        Global stock markets rallied today as investors grew optimistic
+                        about the pace of economic recovery following recent positive
+                        data on employment and consumer spending.
+                    </p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <!-- Button linking to the news category -->
+                    <a href="news.html#emerging-markets" class="news-category-btn">Emerging Markets</a>
+                    <img
+                    src="assets/images/placement-images/placement-img-7.jpg"
+                    alt="News Image 1"
+                    class="news-image"
+                    width="400"
+                    height="250"
+                    />
+                    <div class="news-content">
+                    <time datetime="2026-04-08">April 8, 2026 </time
+                    ><span class="news-author">/ By John Doe</span>
+                    <h3>Global Markets Rally Amid Economic Recovery Hopes</h3>
+                    <p>
+                        Global stock markets rallied today as investors grew optimistic
+                        about the pace of economic recovery following recent positive
+                        data on employment and consumer spending.
+                    </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="carousel-controls">
+                <button class="previous-btn" aria-label="Previous News">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="next-btn" aria-label="Next News">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="todays-highlight">
+            <h2>Today's Highlight</h2>
+            <div class="highlights-container">
+                <!-- The buttons are meant to be placed inside the images and to be clickable as well -->
+                <article class="news-item">
+
+                    <div class="news-items-tags">
+                        <a href="news.html#markets" class="news-category-btn">Markets</a>
+                        <a href="pages/news/americas.html" class="news-region-btn">
+                            <img src="assets/images/flags/us.svg" alt="US Flag" width="20"/>
+                        </a>
+                        <span class="new-impact high-impact">High Impact</span>
+                        <span class="news-format">Data Release</span>
+                    </div>
+
+                    <a href="#" class="news-image-link">
+                        <img
+                        src="assets/images/placement-images/placement-img-1.jpg"
+                        alt="News Image"
+                        class="news-image"
+                        width="300"
+                        height="200"
+                        />
+                    </a>
+
+                    <div class="news-item-meta">
+                        <time datetime="2026-04-06">April 6, 2026</time>
+                        <span class="news-author">/ By John Doe</span>
+                        <span class="news-read-time">10 min read</span>
+                    </div>
+
+                    <div class="news-item-content">
+                        <h3>
+                            <a href="#">US Inflation Data Surpasses Expectations</a>
+                        </h3>
+                        <p>
+                            The latest US inflation data has exceeded market expectations,
+                            raising concerns about the Federal Reserve's monetary policy.
+                        </p>
+                    </div>
+
+                    <div class="news-items-actions">
+                        <button class="bookmark-btn" aria-label="Bookmark this article">
+                            <i data-lucide="bookmark"></i>
+                        </button>
+                        <button class="share-btn" aria-label="Share this article">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+
+                </article>
+
+                <article class="news-item">
+
+                    <div class="news-items-tags">
+                        <a href="news.html#economy" class="news-category-btn">Economy</a>
+                        <a href="pages/news/oceania.html" class="news-region-btn">
+                            <img src="assets/images/flags/nz.svg" alt="New Zealand Flag" width="20"/>
+                        </a>
+                        <span class="new-impact high-impact">High Impact</span>
+                        <span class="news-format">Data Release</span>
+                    </div>
+
+                    <a href="#" class="news-image-link">
+                        <img
+                            src="assets/images/placement-images/placement-img-2.jpg"
+                            alt="News Image"
+                            class="news-image"
+                            width="300"
+                            height="200"
+                        />
+                    </a>
+
+                    <div class="news-item-meta">
+                        <time datetime="2026-04-06">April 6, 2026</time>
+                        <span class="news-author">/ By John Doe</span>
+                        <span class="news-read-time">10 min read</span>
+                    </div>
+
+                    <div class="news-item-content">
+                        <h3>
+                        <a href="#">New Zealand Economy Shows Signs of Recovery</a>
+                        </h3>
+                        <p>
+                            The latest New Zealand economic data has exceeded market expectations,
+                            raising hopes for a faster recovery.
+                        </p>
+                    </div>
+
+                     <div class="news-items-actions">
+                        <button class="bookmark-btn" aria-label="Bookmark this article">
+                            <i data-lucide="bookmark"></i>
+                        </button>
+                        <button class="share-btn" aria-label="Share this article">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+
+                </article>
+
+                <article class="news-item">
+
+                    <div class="news-items-tags">
+                        <a href="news.html#banking-finance" class="news-category-btn">Banking & Finance</a>
+                        <a href="pages/news/asia.html" class="news-region-btn">
+                            <img src="assets/images/flags/cn.svg" alt="China Flag" width="20"/>
+                        </a>
+                        <span class="new-impact high-impact">High Impact</span>
+                        <span class="news-format">Data Release</span>
+                    </div>
+
+                     <a href="#" class="news-image-link">
+                        <img
+                        src="assets/images/placement-images/placement-img-4.jpg"
+                        alt="News Image"
+                        class="news-image"
+                        width="300"
+                        height="200"
+                        />
+                     </a>
+
+                    <div class="news-item-meta">
+                        <time datetime="2026-04-06">April 6, 2026</time>
+                        <span class="news-author">/ By John Doe</span>
+                        <span class="news-read-time">10 min read</span>
+                    </div>
+
+                    <div class="news-item-content">
+                        <h3>
+                            <a href="#">HSBC New branch in Beijing improves performance</a>
+                        </h3>
+                        <p>
+                            After opening a new branch in Beijing, HSBC has reported improved performance in the Asia region, contributing to its overall growth and profitability.
+                        </p>
+                    </div>
+
+                    <div class="news-items-actions">
+                        <button class="bookmark-btn" aria-label="Bookmark this article">
+                            <i data-lucide="bookmark"></i>
+                        </button>
+                        <button class="share-btn" aria-label="Share this article">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="news-item">
+
+                    <div class="news-items-tags">
+                        <a href="news.html#corporate-earnings" class="news-category-btn">Corporate & Earnings</a>
+                        <a href="pages/news/europe.html" class="news-region-btn">
+                            <img src="assets/images/flags/gb.svg" alt="United Kingdom Flag" width="20"/>
+                        </a>
+                        <span class="new-impact high-impact">High Impact</span>
+                        <span class="news-format">Data Release</span>
+                    </div>
+
+                    <a href="#" class="news-image-link">
+                        <img
+                        src="assets/images/placement-images/placement-img-4.jpg"
+                        alt="News Image"
+                        class="news-image"
+                        width="300"
+                        height="200"
+                    />
+                    </a>
+                    
+                    <div class="news-item-meta">
+                        <time datetime="2026-04-06">April 6, 2026</time>
+                        <span class="news-author">/ By John Doe</span>
+                        <span class="news-read-time">3 min read</span>
+                    </div>
+
+                    <div class="news-item-content">
+                        <h3>
+                            <a href="#">Barclays shocks traders with surprise loss</a>
+                        </h3>
+                        <p>
+                            The latest earnings report from Barclays has sent shockwaves through the financial sector, as the bank reported a surprise loss for the quarter, citing unexpected market volatility and increased loan defaults.
+                        </p>
+                    </div>
+
+                    <div class="news-items-actions">
+                        <button class="bookmark-btn" aria-label="Bookmark this article">
+                            <i data-lucide="bookmark"></i>
+                        </button>
+                        <button class="share-btn" aria-label="Share this article">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+
+                </article>
+
+                <article class="news-item">
+                    
+                    <div class="news-items-tags">
+                        <a href="news.html#emerging-markets" class="news-category-btn">Emerging Markets</a>
+                        <a href="pages/news/africa.html" class="news-region-btn">
+                            <img src="assets/images/flags/ke.svg" alt="Kenya Flag" width="20"/>
+                        </a>
+                        <span class="new-impact high-impact">High Impact</span>
+                        <span class="news-format">Data Release</span>
+                    </div>
+
+                    <a href="#" class="news-image-link">
+                    <img
+                        src="assets/images/placement-images/placement-img-8.jpg"
+                        alt="News Image"
+                        class="news-image"
+                        width="300"
+                        height="200"
+                    />
+                    </a>
+                    
+                    <div class="news-item-meta">
+                        <time datetime="2026-04-06">April 6, 2026</time>
+                        <span class="news-author">/ By John Doe</span>
+                        <span class="news-read-time">3 min read</span>
+                    </div>
+
+                    <div class="news-item-content">
+                        <h3>
+                        <a href="#">Kenya's Emerging Market Shows Promise</a>
+                        </h3>
+                        <p>
+                            Despite a shaky global economic environment, Kenya's emerging market has shown resilience and potential for growth, attracting investor interest.
+                        </p>
+                    </div>
+
+                    <div class="news-items-actions">
+                        <button class="bookmark-btn" aria-label="Bookmark this article">
+                            <i data-lucide="bookmark"></i>
+                        </button>
+                        <button class="share-btn" aria-label="Share this article">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+
+                </article>
+
+                <article class="news-item">
+
+                    <div class="news-items-tags">
+                        <a href="news.html#real-estate" class="news-category-btn">Real Estate</a>
+                        <a href="pages/news/middle-east.html" class="news-region-btn">
+                            <img src="assets/images/flags/sa.svg" alt="Saudi Arabia Flag" width="20"/>
+                        </a>
+                        <span class="new-impact high-impact">High Impact</span>
+                        <span class="news-format">Data Release</span>
+                    </div>
+                       
+                    <a href="#" class="news-image-link">
+                    <img
+                        src="assets/images/placement-images/placement-img-4.jpg"
+                        alt="News Image"
+                        class="news-image"
+                        width="300"
+                        height="200"
+                    />
+                    </a>
+
+                    <div class="news-item-meta">
+                        <time datetime="2026-04-06">April 6, 2026</time>
+                        <span class="news-author">/ By Jane Doe</span>
+                        <span class="news-read-time">5 min read</span>
+                    </div>
+
+                    <div class="news-item-content">
+                        <h3>
+                            <a href="#">Saudi Arabia Real Estate in turmoil</a>
+                        </h3>
+                        <p>
+                            After the recent economic downturn, Saudi Arabia's real estate market has been facing significant challenges, with declining property values and reduced investor confidence.
+                        </p>
+                    </div>
+
+                    <div class="news-items-actions">
+                        <button class="bookmark-btn" aria-label="Bookmark this article">
+                            <i data-lucide="bookmark"></i>
+                        </button>
+                        <button class="share-btn" aria-label="Share this article">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+            
+        </section>
+
+        <section class="data-releases">
+            <h2>Data Releases</h2>
+            <div id="data-releases-container" class="data-releases-grid">
+                <!-- Latest economic data releases from different countries will be displayed here -->
+            </div>
+        </section>
+
+        <section class="expert-analysis">
+            <h2>Expert Analysis</h2>
+            <div id="expert-analysis-container" class="expert-analysis-grid">
+                <!-- Expert analysis and opinions on current market trends and economic developments will be displayed here -->
+            </div>
+        </section>
+
+        <section class="weekly-digest">
+            <h2>Weekly Digest</h2>
+            <div id="weekly-digest-container" class="weekly-digest-grid">
+                <!-- A summary of the week's most important news and developments in the financial markets and economy will be displayed here -->
+            </div>
+        </section>
+
+        <aside>
+
+            <div class="most-read">
+                <h2>Most Read</h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Categories</a>
-                        <ul>
-                            <li><a href="#">Markets</a></li>
-                            <li><a href="#">Economy</a></li>
-                            <li><a href="#">Inflation & Prices</a></li>
-                            <li><a href="#">Central Banks & Monetary Policy</a></li>
-                            <li><a href="#">Employment & Labour</a></li>
-                            <li><a href="#">Trade & Geopolitics</a></li>
-                            <li><a href="#">Energy</a></li>
-                            <li><a href="#">Government & Fiscal Policy</a></li>
-                            <li><a href="#">Corporate & Earnings </a></li>
-                            <li><a href="#">Commodities</a></li>
-                            <li><a href="#">Currencies & Forex </a></li>
-                            <li><a href="#">Cryptocurrency & Digital Assets</a></li>
-                            <li><a href="#">Real Estate </a></li>
-                            <li><a href="#">Banking & Financial Sector</a></li>
-                            <li><a href="#">Emerging Markets</a></li>
-                            <li><a href="#">Climate & Sustainable Finance</a></li>
-
-                        </ul>
-                    </li>
-                    <li><a href="#">Global</a>
-                        <ul>
-                            <li><a href="#">Global</a></li>
-                            <li><a href="#">Americas</a></li>
-                            <li><a href="#">Europe</a></li>
-                            <li><a href="#">Asia Pacific</a></li>
-                            <li><a href="#">Middle East</a></li>
-                            <li><a href="#">Oceania</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#">Global Markets Rally Amid Economic Recovery Hopes</a></li>
+                    <li><a href="#">US Inflation Data Surpasses Expectations</a></li>
+                    <li><a href="#">New Zealand Economy Shows Signs of Recovery</a></li>
+                    <li><a href="#">HSBC New branch in Beijing improves performance</a></li>
+                    <li><a href="#">Barclays shocks traders with surprise loss</a></li>
                 </ul>
-            </nav>
-        </header>
+            </div>
 
+            <div class="upcoming-data-releases">
+                <h2>Upcoming Data Releases</h2>
+                <ul>
+                    <li><a href="#">US Non-Farm Payrolls - April 10, 2026</a></li>
+                    <li><a href="#">Eurozone CPI - April 12, 2026</a></li>
+                    <li><a href="#">UK GDP - April 15, 2026</a></li>
+                    <li><a href="#">Japan Tankan Survey - April 20, 2026</a></li>
+                    <li><a href="#">China Manufacturing PMI - April 25, 2026</a></li>
+                </ul>
+            </div>
 
+            <div class="subscribe-section">
+            <h2>Subscribe to our Newsletter</h2>
+            <p>Get the latest news and updates delivered straight to your inbox.</p>
+            <form id="newsletter-form">
+                <label for="email" class="visually-hidden">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                />
+                <button type="submit">Subscribe</button>
+            </form>
+            </div>
 
+            <div class="trending-topics">
+                <h2>Trending Topics</h2>
+                <ul>
+                    <li><a href="#">Cryptocurrency Regulation</a></li>
+                    <li><a href="#">Global Supply Chain Disruptions</a></li>
+                    <li><a href="#">Green Energy Investments</a></li>
+                    <li><a href="#">Tech Sector Earnings</a></li>
+                    <li><a href="#">Emerging Markets Growth</a></li>
+                </ul>
+            </div>
+        </aside>
+      
+    </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <script>lucide.createIcons();</script>
-    </body>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
 </html>
